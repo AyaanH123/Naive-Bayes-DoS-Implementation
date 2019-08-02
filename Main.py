@@ -5,6 +5,12 @@ from ctypes import *
 
 df = pd.read_csv("DoS_dataset.csv")
     
+for data in df:
+    if data.islower():
+        temp = int(data,16)
+        data = temp
+        df.update(data)
+        
 training_length = len(df)*0.67
 training_data = df.iloc[:int(training_length),:]
 test_data = df.loc[int(training_length)+1:,:]
